@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="gzm.demo.springboot.boot_feature.dao.CabinetDao" >
+ 	
+ 	<select id="getCabPowerByArea" parameterType="java.lang.String"
+		resultType="gzm.demo.springboot.boot_feature.entity.dcom.CabinetPropertyBean">
+				select SUM(POWER) as power from tb_cabinet_resource a,tb_cabinet b where  b.compartmentno LIKE  #{areaCode}"%" and b.powernostatus = 'ON' and a.cabinetid = b.id 
+	</select>	
+</mapper>

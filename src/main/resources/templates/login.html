@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<!-- start: JavaScript-->
+<script th:src="@{/js/jquery-1.10.2.min.js}"></script>
+<script th:src="@{/js/jquery-migrate-1.2.1.min.js}"></script>
+<script th:src="@{/js/jquery-ui-1.10.3.custom.min.js}"></script>
+<script th:src="@{/js/jquery.ui.touch-punch.js}"></script>
+<script th:src="@{/js/modernizr.js}"></script>
+<script th:src="@{/js/bootstrap.min.js}"></script>
+<script th:src="@{/js/jquery.cookie.js}"></script>
+<script src='js/fullcalendar.min.js'></script>
+<script src='js/jquery.dataTables.min.js'></script>
+<script th:src="@{/js/excanvas.js}"></script>
+<script th:src="@{/js/jquery.flot.js}"></script>
+<script th:src="@{/js/jquery.flot.pie.js}"></script>
+<script th:src="@{/js/jquery.flot.stack.js}"></script>
+<script th:src="@{/js/jquery.flot.resize.min.js}"></script>
+<script th:src="@{/js/jquery.flot.time.js}"></script>
+
+<script th:src="@{/js/jquery.chosen.min.js}"></script>
+<script th:src="@{/js/jquery.uniform.min.js}"></script>
+<script th:src="@{/js/jquery.cleditor.min.js}"></script>
+<script th:src="@{/js/jquery.noty.js}"></script>
+<script th:src="@{/js/jquery.elfinder.min.js}"></script>
+<script th:src="@{/js/jquery.raty.min.js}"></script>
+<script th:src="@{/js/jquery.iphone.toggle.js}"></script>
+<script th:src="@{/js/jquery.uploadify-3.1.min.js}"></script>
+<script th:src="@{/js/jquery.gritter.min.js}"></script>
+<script th:src="@{/js/jquery.imagesloaded.js}"></script>
+<script th:src="@{/js/jquery.masonry.min.js}"></script>
+<script th:src="@{/js/jquery.knob.modified.js}"></script>
+<script th:src="@{/js/jquery.sparkline.min.js}"></script>
+<script th:src="@{/js/counter.min.js}"></script>
+<script th:src="@{/js/raphael.2.1.0.min.js}"></script>
+<script th:src="@{/js/justgage.1.0.1.min.js}"></script>
+<script th:src="@{/js/jquery.autosize.min.js}"></script>
+<script th:src="@{/js/retina.js}"></script>
+<script th:src="@{/js/jquery.placeholder.min.js}"></script>
+<script th:src="@{/js/wizard.min.js}"></script>
+<script th:src="@{/js/core.min.js}"></script>
+<script th:src="@{/js/charts.min.js}"></script>
+<script th:src="@{/js/custom.min.js}"></script>
+<!--script type="text/javascript"-->
+<script th:inline="javascript">
+	function msgReg() {
+		var username = $("#username").val();
+		var address = $("#address").val();
+		var obj = {
+			name : username,
+			birthday : "2018-07-02",
+			address : address
+		};
+
+		$.ajax({
+			type : 'POST',
+			contentType : 'application/json',
+			url : '/user/userRegister',
+			data : JSON.stringify(obj),
+			timeout : 1000,
+			cache : false,
+			success : function succFunction(data) {
+				for (var i = 0; i < result.length; i++) {
+					var result_code = data[i]['result_code'];
+					alert(result_code);
+					if (result_code == '0') {
+						alert("a");
+					}
+				}
+			}, //成功执行方法  
+			error : function succFunction(data) {
+				alert ("error");
+				alert (reslut);
+			},
+			dataType : "json"
+		});
+	}
+
+	function succFunction(data) {
+		alert(data);
+
+		for (var i = 0; i < data.length; i++) {
+			var result_code = data[i]['result_code'];
+			alert(result_code);
+			if (result_code == '0') {
+				alert('a');
+			}
+		}
+	}
+</script>
+<!-- end: JavaScript-->
+<!-- start: Meta -->
+<meta charset="utf-8" />
+<title>SimpliQ - Flat & Responsive Bootstrap Admin Template</title>
+<meta name="description"
+	content="SimpliQ - Flat & Responsive Bootstrap Admin Template." />
+<meta name="author" content="Łukasz Holeczek" />
+<meta name="keyword"
+	content="SimpliQ, Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina" />
+<!-- end: Meta -->
+
+<!-- start: Mobile Specific -->
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<!-- end: Mobile Specific -->
+
+<!-- start: CSS -->
+<link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
+<link th:href="@{/css/bootstrap-responsive.min.css}" rel="stylesheet" />
+<link th:href="@{/css/style.min.css}" rel="stylesheet" />
+<link th:href="@{/css/style-responsive.min.css}" rel="stylesheet" />
+<link th:href="@{/css/retina.css}" rel="stylesheet" />
+<!-- end: CSS -->
+
+
+<!-- The HTML5 shim, for IE6-8 support of HTML5 elements -->
+<!--[if lt IE 9]>
+		<link id="ie-style" th:href="@{/css/ie.css}" rel="stylesheet">
+	<![endif]-->
+
+<!--[if IE 9]>
+		<link id="ie9style" th:href="@{/css/ie9.css}" rel="stylesheet">
+	<![endif]-->
+
+<!-- start: Favicon and Touch Icons -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144"
+	href="ico/apple-touch-icon-144-precomposed.png" />
+<link rel="apple-touch-icon-precomposed" sizes="114x114"
+	href="ico/apple-touch-icon-114-precomposed.png" />
+<link rel="apple-touch-icon-precomposed" sizes="72x72"
+	href="ico/apple-touch-icon-72-precomposed.png" />
+<link rel="apple-touch-icon-precomposed"
+	href="ico/apple-touch-icon-57-precomposed.png" />
+<link rel="shortcut icon" href="ico/favicon.png" />
+<!-- end: Favicon and Touch Icons -->
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+
+<body>
+	<div class="container-fluid-full">
+		<div class="row-fluid">
+
+			<div class="row-fluid">
+				<div class="login-box">
+					<h2>Login to your account</h2>
+					<form class="form-horizontal" method="post" />
+					<fieldset>
+
+						<input class="input-large span12" name="username" id="username"
+							type="text" placeholder="username" th:value="*{username}" /> <input
+							class="input-large span12" name="address" id="address"
+							type="text" placeholder="address" th:value="*{address}" /> <input
+							class="input-large span12" name="birthday" id="birthday"
+							type="text" placeholder="birthday" />
+
+						<div class="clearfix"></div>
+
+						<label class="remember" for="remember"><input
+							type="checkbox" id="remember" />Remember me</label>
+
+						<div class="clearfix"></div>
+
+						<button type="submit" onclick="msgReg()"
+							class="btn btn-primary span12">Login</button>
+					</fieldset>
+
+					</form>
+					<hr />
+					<h3>Forgot Password?</h3>
+					<p>
+						No problem, <a href="#">click here</a> to get a new password.
+					</p>
+				</div>
+			</div>
+			<!--/row-->
+
+		</div>
+		<!--/fluid-row-->
+
+	</div>
+	<!--/.fluid-container-->
+
+	<div style="display: none">
+		<script src='http://v7.cnzz.com/stat.php?id=155540&web_id=155540'
+			language='JavaScript' charset='gb2312'></script>
+	</div>
+</body>
+</html>

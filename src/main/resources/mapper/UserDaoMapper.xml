@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="gzm.demo.springboot.boot_feature.dao.UserDao" >
+  <resultMap id="BaseResultMap" type="gzm.demo.springboot.boot_feature.entity.User" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="birthday" property="birthday" jdbcType="DATE" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="syflg" property="syflg" jdbcType="INTEGER" />
+    <result column="age" property="age" jdbcType="INTEGER" />
+    <result column="sex" property="sex" jdbcType="INTEGER" />
+  </resultMap>
+
+  <sql id="Base_Column_List" >
+    id, name, birthday, address, syflg, age, sex
+  </sql>
+
+  <select id="selectUserBySyflg" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from user
+    where syflg = #{syflg,jdbcType=INTEGER}
+    order by id desc
+  </select>
+  
+  <update id="updUserSyflg" parameterType="java.util.List" >
+    update user set syflg = 1 where id in 
+		<foreach collection="list" item="item" open="(" close=")" separator=",">
+				#{item.id}
+		</foreach>
+  </update>  
+
+</mapper>
